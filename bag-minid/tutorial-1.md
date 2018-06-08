@@ -1,8 +1,8 @@
-# Tutorial #1: Create a "holey" bag from assets on a local filesystem
+# Tutorial #1: Create an _abridged_ bag from assets on a local filesystem
 
 ## Introduction
-In this tutorial, we will show how one can create a "holey" bag that uses `minid` identifers instead of regular
-URLs to reference payload files. A "holey" or _abridged_ bag is a bag where one or more of the payload files
+In this tutorial, we will show how one can create an _abridged_ bag that uses `minid` identifers instead of regular
+URLs to reference payload files. An _abridged_ (or "holey) bag is a bag where one or more of the payload files
 are not distributed with the bag but are rather remotely hosted and referenced by URL in the bag's
 [`fetch.txt`](https://tools.ietf.org/html/draft-kunze-bagit-16#section-2.2.3).
 Our goal is to create a bag using only remote `minid` references to the payload files (hosted in cloud storage),
@@ -51,7 +51,7 @@ upload the payload files to.
 * The last two positional arguments, `./fair-tutorial-bag-minid-input` and `./ftbm-rfm-1.json` are the input directory and output file path, respectively.
 
 The `create-rfm-from-filesystem` command and it's output is shown below:
-```sh
+```
 nih-commons:mdarcy[~] bdbag-utils --debug create-rfm-from-filesystem --checksum md5 --base-url https://fair-research.s3.amazonaws.com/tutorials/bag-minid/tutorial-1/input --url-formatter append-path ./fair-tutorial-bag-minid-input ./ftbm-rfm-1.json
 
 2018-06-06 22:41:51,332 - INFO - 1 subdirectories found in input directory ./fair-tutorial-bag-minid-input ['images']
@@ -111,7 +111,7 @@ Next, we are going to create `minid` identifiers for each remote payload file li
 step using the `minid` CLI command `batch-register`. This command will take our `remote-file-manifest` as input and generate `minid` identifiers
 for each entry in the manifest. The output of this command is the manifest as it was input, but with one exception: the `url` field for each
 manifest entry will now be replaced with the registered `minid` identifier for the referenced remote content.
-```sh
+```
 nih-commons:mdarcy[~] minid --batch-register ./ftbm-rfm-1.json > ftbm-rfm-1-minid.json
 2018-06-06 22:45:27,623 - INFO - Checking if the entity b597d3b1126a8db1f09fd70128f28f18 already exists on the server: http://minid.bd2k.org/minid
 2018-06-06 22:45:27,859 - INFO - Creating new identifier
@@ -122,7 +122,7 @@ nih-commons:mdarcy[~] minid --batch-register ./ftbm-rfm-1.json > ftbm-rfm-1-mini
 ```
 
 Success! Now, let's query them just to be sure:
-```sh
+```
 nih-commons:mdarcy[~] minid minid:b9611n
 2018-06-06 22:50:06,939 - INFO - Checking if the entity minid:b9611n already exists on the server: http://minid.bd2k.org/minid
 Identifier: minid:b9611n
@@ -135,7 +135,7 @@ Locations:
 Title:
   mdarcy - README.txt
 ```
-```sh
+```
 nih-commons:mdarcy[~] minid minid:b92695
 2018-06-06 22:50:43,460 - INFO - Checking if the entity minid:b92695 already exists on the server: http://minid.bd2k.org/minid
 Identifier: minid:b92695
@@ -195,7 +195,7 @@ in the `bdbag-1.3.1` release which causes `bdbag` to generate a basic `bagit-ro`
 `manifest.json` as a tagfile in the `metadata` tagfile directory. The `update` keyword used with this argument instructs `bdbag` to update any existing
 `metadata/manifest.json` file encountered in the bag, asopposed to the `overwrite` keyword which will replace it.
 * The final positional argument is the bag path: `fair-tutorial-bag-minid`
-```sh
+```
 nih-commons:mdarcy[~] mkdir fair-tutorial-bag-minid
 nih-commons:mdarcy[~] bdbag --checksum md5 --remote-file-manifest ftbm-rfm-1-minid.json --ro-manifest-generate update fair-tutorial-bag-minid
 
@@ -294,7 +294,7 @@ nih-commons:mdarcy[~] cat fair-tutorial-bag-minid/metadata/manifest.json
 ```
 
 OK, since everything is looking correct, let's go ahead and archive (serialize) the bag:
-```sh
+```
 nih-commons:mdarcy[~] bdbag --archive zip fair-tutorial-bag-minid
 
 2018-06-06 23:45:03,488 - INFO - The directory /home/mdarcy/fair-tutorial-bag-minid is already a bag.
@@ -317,7 +317,7 @@ nih-commons:mdarcy[~] aws s3api put-object --acl public-read --bucket fair-resea
 ```
 
 Finally, let's create a minid for the bag archive:
-```sh
+```
 nih-commons:mdarcy[~] minid --register --title "Fair Research BDBag/Minid Tutorial #1 - Example Bag"  fair-tutorial-bag-minid.zip --locations https://fair-research.s3.amazonaws.com/tutorials/bag-minid/tutorial-1/output/fair-tutorial-bag-minid.zip
 2018-06-07 00:31:14,334 - INFO - Computing checksum for fair-tutorial-bag-minid.zip using <sha256 HASH object @ 0x7f97f95d7828>
 2018-06-07 00:31:14,334 - INFO - Checking if the entity 70b8bccc69680f9b0bb53db562fdf3bbd84bb4d0f2f21517fa428fb3d38d41b3 already exists on the server: http://minid.bd2k.org/minid
@@ -326,7 +326,7 @@ nih-commons:mdarcy[~] minid --register --title "Fair Research BDBag/Minid Tutori
 ```
 
 Let's verify that minid before we continue:
-```sh
+```
 2018-06-07 00:31:36,146 - INFO - Checking if the entity minid:b90986 already exists on the server: http://minid.bd2k.org/minid
 Identifier: minid:b90986
 Created by: mdarcy (0000-0003-2280-917X)
@@ -341,7 +341,7 @@ Title:
 <a name="stage_3"></a>
 ## Stage 3: Download the bag, resolve it's payload, and validate.
 We're in the home stretch! Now its time to see the fruits of our labor our in action. First, let's download the bag:
-```sh
+```
 nih-commons:mdarcy[~] wget https://fair-research.s3.amazonaws.com/tutorials/bag-minid/tutorial-1/output/fair-tutorial-bag-minid.zip
 --2018-06-07 00:32:56--  https://fair-research.s3.amazonaws.com/tutorials/bag-minid/tutorial-1/output/fair-tutorial-bag-minid.zip
 Resolving fair-research.s3.amazonaws.com (fair-research.s3.amazonaws.com)... 52.218.197.10
@@ -356,7 +356,7 @@ fair-tutorial-bag-minid.zip       100%[=========================================
 ```
 
 Next, extract the bag and resolve (download) all of the remotely referenced payload files.
-```sh
+```
 nih-commons:mdarcy[~] bdbag ./fair-tutorial-bag-minid.zip
 
 2018-06-07 00:35:36,582 - INFO - Extracting ZIP archived bag file: /home/mdarcy/fair-tutorial-bag-minid.zip
@@ -377,7 +377,7 @@ nih-commons:mdarcy[~] bdbag --fetch all ./fair-tutorial-bag-minid
 ```
 
 Yes! We got all of the payload successfully. But does it validate?
-```sh
+```
 nih-commons:mdarcy[~] bdbag --validate full ./fair-tutorial-bag-minid
 
 2018-06-07 01:17:26,970 - INFO - Validating bag: /home/mdarcy/fair-tutorial-bag-minid

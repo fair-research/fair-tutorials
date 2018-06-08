@@ -35,7 +35,7 @@ Next, check that the correct versions were installed:
 nih-commons:mdarcy[~] bdbag --version
 1.3.1
 nih-commons:mdarcy[~] minid --version
-1.2.3
+1.2.4
 ```
 Finally, use `minid` to register yourself as a user with the `minid` server. Check your email for the server reponse which will contain a code that you will need to create and update `minid` identifiers.
 ```sh
