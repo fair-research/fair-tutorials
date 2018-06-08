@@ -412,4 +412,4 @@ nih-commons:mdarcy[~] bdbag --validate full ./fair-tutorial-bag-minid
 
 Success! We're done! High Fives all around!
 
-Are you ready to continue to Tutorial [#2](tutorial-2.md)?
+
