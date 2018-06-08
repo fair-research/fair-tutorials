@@ -327,6 +327,7 @@ nih-commons:mdarcy[~] minid --register --title "Fair Research BDBag/Minid Tutori
 
 Let's verify that minid before we continue:
 ```
+nih-commons:mdarcy[~] minid minid:b90986
 2018-06-07 00:31:36,146 - INFO - Checking if the entity minid:b90986 already exists on the server: http://minid.bd2k.org/minid
 Identifier: minid:b90986
 Created by: mdarcy (0000-0003-2280-917X)
