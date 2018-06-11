@@ -3,9 +3,9 @@
 ## Introduction
 In this tutorial, we will show how one can create an _abridged_ bag that uses `minid` identifers instead of regular
 URLs to reference payload files. An abridged (or "holey") bag is a bag where one or more of the payload files
-are not distributed with the bag but are rather remotely hosted and referenced by URL in the bag's
+are not distributed with the bag but rather are remotely hosted and referenced by URL in the bag's
 [`fetch.txt`](https://tools.ietf.org/html/draft-kunze-bagit-16#section-2.2.3).
-Our goal is to create a bag using only remote `minid` references to the payload files (hosted in cloud storage),
+Our goal is to create a bag using only remote `minid` references to payload files hosted in cloud storage,
 upload the bag to cloud storage as well, and finally mint a `minid` identifier for the bag itself.
 
 This task consists of three stages:

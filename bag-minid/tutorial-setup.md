@@ -5,8 +5,8 @@ The following tutorial setup steps are common to all of the tutorials in this gu
 1. Ensure that you have the [prerequisites](#prerequisites) installed in your environment.
 2. [Install](#installation) the software.
 3. [Configure](#configuration) the software so that your own efforts are consistent with what is presented in the tutorials.
-<a name="prerequisites"></a>
 
+<a name="prerequisites"></a>
 ## Prerequisites
 * Python 2.7 or higher
 * The following Python modules: `setuptools`, `pip`, `wheel`. It is recommended to upgrade these modules even if they are already present. The following command can be used:
@@ -22,8 +22,8 @@ You can do this via either `awscli` or the AWS Web Browser GUI.
 Note: When using `pip install` commands, it may be necessary to use `sudo` on Unix and Mac
 systems if you are modifying the system Python installation. Alternatively, you can pass the
 `--user` flag to `pip install` in order to use the Python user install directory for your platform.
-<a name="installation"></a>
 
+<a name="installation"></a>
 ## Installation
 Use `pip` to install `bdbag` version `1.3.1` or greater, and `minid` version `1.2.4` or greater from PyPi:
 ```sh
