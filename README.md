@@ -1,7 +1,7 @@
 # FAIR Research Tutorials
 
 ## `BDBag` and `Minid`
-
+### Table of Contents
 1. [Setup](bag-minid/tutorial-setup.md): Common setup steps required for all tutorials in this series.
     1. [Prerequisites](bag-minid/tutorial-setup.md#prerequisites)
     2. [Installation](bag-minid/tutorial-setup.md#installation)
