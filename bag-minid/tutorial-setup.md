@@ -25,17 +25,17 @@ systems if you are modifying the system Python installation. Alternatively, you 
 
 <a name="installation"></a>
 ## Installation
-Use `pip` to install `bdbag` version `1.3.1` or greater, and `minid` version `1.2.4` or greater from PyPi:
+Use `pip` to install `bdbag` version `1.4.1` or greater, and `minid` version `1.3.0` or greater from PyPi:
 ```sh
-pip install --upgrade 'bdbag>=1.3.1'
-pip install --upgrade 'minid>=1.2.4'
+pip install --upgrade 'bdbag>=1.4.1'
+pip install --upgrade 'minid>=1.3.0'
 ```
 Next, check that the correct versions were installed:
 ```sh
 nih-commons:mdarcy[~] bdbag --version
-1.3.1
+1.4.1
 nih-commons:mdarcy[~] minid --version
-1.2.4
+1.3.0
 ```
 Finally, use `minid` to register yourself as a user with the `minid` server. Check your email for the server reponse which will contain a code that you will need to create and update `minid` identifiers.
 ```sh

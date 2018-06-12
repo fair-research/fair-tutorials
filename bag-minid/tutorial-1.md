@@ -14,6 +14,12 @@ This task consists of three stages:
 2. [Create](#stage_2) the bag, upload it to cloud storage, and publish the bag identifier.
 3. [Test](#stage_3) the bag by downloading it, resolving (downloading) the bag's payload, and validating the completed bag.
 
+###### Note:
+Certain parts of this tutorial are more demonstrative in nature, and you should be aware that copying and pasting
+the command examples below will not necessarily result in the exact output as shown. In particular, generating `minid` identifers
+for content will create new identifiers based on your `minid` user account, and uploading files to S3 will be have to be done to a
+bucket that you have write access to, and the S3 path locations used in your created identifiers adjusted accordingly.
+
 <a name="stage_1"></a>
 ## Stage 1: Prepare the bag payload
 In this stage, we will generate checksums for each of the bag's payload files, upload each file to cloud storage,
@@ -207,7 +213,7 @@ In other words, if multiple hash algorithms are specified during bag create or u
 * The argument `--remote-file-manifest ftbm-rfm-1-minid.json` specifies that the output file `ftbm-rfm-1-minid.json` from our `minid --batch-register`
 command should be used as the input `remote-file-manifest`.
 * The argument `--ro-manifest-generate update` is a new [function](https://github.com/fair-research/bdbag/blob/master/doc/api.md#generate_ro_manifest)
-in the `bdbag-1.3.1` release which causes `bdbag` to generate a basic `bagit-ro` [Research Object](https://github.com/ResearchObject/bagit-ro)
+in the `bdbag-1.4.1` release which causes `bdbag` to generate a basic `bagit-ro` [Research Object](https://github.com/ResearchObject/bagit-ro)
 `manifest.json` as a tagfile in the `metadata` tagfile directory. The `update` keyword used with this argument instructs `bdbag` to update any existing
 `metadata/manifest.json` file encountered in the bag, as opposed to the `overwrite` keyword which will replace it.
 * The final positional argument is the bag path: `fair-tutorial-bag-minid`
@@ -267,7 +273,7 @@ b597d3b1126a8db1f09fd70128f28f18  data/README.txt
 51805244fa380526747d937731a75e9c  data/images/fair-research.jpg
 ```
 
-What about `metadata/manifest.json` - what got generated? As you can see, it is a bare-bones RO manifest. But, the good part is that the
+What about `metadata/manifest.json` -- what got generated? As you can see, it is a bare-bones RO manifest. But, the good part is that the
 `aggregates` section was generated automatically by introspecting the bag structure. Also, some of the basic provenance fields got populated
 the same way, via `bag-info.txt`.
 ```sh
@@ -304,7 +310,7 @@ nih-commons:mdarcy[~] cat fair-tutorial-bag-minid/metadata/manifest.json
     },
     "authoredOn": "2018-06-06T23:06:57+00:00",
     "createdBy": {
-        "name": "BDBag version: 1.3.1 (Bagit version: 1.6.4)",
+        "name": "BDBag version: 1.4.1 (Bagit version: 1.6.4)",
         "uri": "https://github.com/fair-research/bdbag"
     },
     "createdOn": "2018-06-06T23:06:57+00:00"
@@ -359,7 +365,7 @@ Title:
 ```
 <a name="stage_3"></a>
 ## Stage 3: Download the bag, resolve it's payload, and validate.
-We're in the home stretch! Now its time to see the fruits of our labor our in action. First, let's download the bag:
+We're in the home stretch! Now its time to see the fruits of our labor in action. First, let's download the bag:
 ```
 nih-commons:mdarcy[~] wget https://fair-research.s3.amazonaws.com/tutorials/bag-minid/tutorial-1/output/fair-tutorial-bag-minid.zip
 --2018-06-07 00:32:56--  https://fair-research.s3.amazonaws.com/tutorials/bag-minid/tutorial-1/output/fair-tutorial-bag-minid.zip
