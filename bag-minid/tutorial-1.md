@@ -26,7 +26,7 @@ In this stage, we will generate checksums for each of the bag's payload files, u
 and batch publish identifiers for all of the remote payload files.
 
 To keep things simple, the payload consists of only two files: a README.txt in the root of the payload directory,
-and a JPEG image file in an `images` subdirectory.
+and a JPEG image file in an `images` subdirectory. This sample directory can be found [here](assets/tutorial-1/fair-tutorial-bag-minid-input).
 ```sh
 nih-commons:mdarcy[~] ls -lgR fair-tutorial-bag-minid-input/
 fair-tutorial-bag-minid-input/:
