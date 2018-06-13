@@ -13,11 +13,11 @@ The following tutorial setup steps are common to all of the tutorials in this gu
     ```sh
     pip install --upgrade pip setuptools wheel
     ```
-* Optional: For uploading to AWS, you first need to install `awscli`, which you can install via `pip`.
+* Optional: For uploading to AWS S3, you first need to install `awscli`, which you can install via `pip`.
 Additionally, you need a valid AWS user account and need to know your `aws_access_key_id`
 and `aws_secret_access_key_id`. Once you have these, run `aws configure` and enter the keys
 at the prompts. Finally, create a bucket where you will upload your files.
-You can do this via either `awscli` or the AWS Web Browser GUI.
+You can do this via either `awscli` or the AWS S3 Web Browser GUI.
 
 Note: When using `pip install` commands, it may be necessary to use `sudo` on Unix and Mac
 systems if you are modifying the system Python installation. Alternatively, you can pass the
